@@ -1,0 +1,112 @@
+package com.example.ui
+
+object TranslationHelper {
+    var currentLanguage = "en"
+
+    private val translations = mapOf(
+        "en" to mapOf(
+            "app_title" to "SubstanceID",
+            "nav_scanner" to "Scan AI",
+            "nav_reagents" to "Reagents",
+            "nav_home" to "Home",
+            "nav_tips" to "Reduction",
+            "nav_profile" to "Profile",
+            "emergency_title" to "One-Tap Emergency",
+            "emergency_desc" to "Choose region to localize. Tap the red button to call emergency services directly.",
+            "emergency_close" to "CLOSE",
+            "visual_theme" to "Visual Theme",
+            "theme_dark" to "Dark Space",
+            "theme_light" to "High Visibility Light",
+            "lang_settings" to "Language Settings",
+            "lang_desc" to "Change display language of SubstanceID",
+            "profile_title" to "Profile & Settings",
+            "sitter_dir" to "Trip Sitter & Guide Directory",
+            "sitter_desc" to "Support other members during psychedelic sessions, shroom exploration, or deep integration as a sober mentor.",
+            "search_substances" to "Search substances...",
+            "harm_reduction_hub" to "Harm Reduction Hub",
+            "safety_checklist" to "Safety Checklist",
+            "emergency_help" to "Emergency Help",
+            "register_guide" to "Register as a Local Trip Guide",
+            "status_offline" to "Status: Encrypted Offline Storage"
+        ),
+        "es" to mapOf(
+            "app_title" to "SubstanceID",
+            "nav_scanner" to "Escanear IA",
+            "nav_reagents" to "Reactivos",
+            "nav_home" to "Inicio",
+            "nav_tips" to "Reducción",
+            "nav_profile" to "Perfil",
+            "emergency_title" to "Emergencia de un toque",
+            "emergency_desc" to "Elija la región para localizar. Toque el botón rojo para llamar directamente.",
+            "emergency_close" to "CERRAR",
+            "visual_theme" to "Tema Visual",
+            "theme_dark" to "Espacio Oscuro",
+            "theme_light" to "Luz de Alta Visibilidad",
+            "lang_settings" to "Configuración de Idioma",
+            "lang_desc" to "Cambiar el idioma de visualización de SubstanceID",
+            "profile_title" to "Perfil y Configuración",
+            "sitter_dir" to "Directorio de Guías y Acompañantes",
+            "sitter_desc" to "Apoya a otros miembros durante sesiones psicodélicas, exploración de hongos o integración como mentor sobrio.",
+            "search_substances" to "Buscar sustancias...",
+            "harm_reduction_hub" to "Centro de Reducción de Daños",
+            "safety_checklist" to "Lista de Seguridad",
+            "emergency_help" to "Ayuda de Emergencia",
+            "register_guide" to "Registrarse como Guía Local de Viajes",
+            "status_offline" to "Estado: Almacenamiento fuera de línea cifrado"
+        ),
+        "fr" to mapOf(
+            "app_title" to "SubstanceID",
+            "nav_scanner" to "Scanner IA",
+            "nav_reagents" to "Réactifs",
+            "nav_home" to "Accueil",
+            "nav_tips" to "Réduction",
+            "nav_profile" to "Profil",
+            "emergency_title" to "Urgence en un clic",
+            "emergency_desc" to "Choisissez la région à localiser. Appuyez sur le bouton rouge pour appeler directement.",
+            "emergency_close" to "FERMER",
+            "visual_theme" to "Thème Visuel",
+            "theme_dark" to "Espace Sombre",
+            "theme_light" to "Lumière Haute Visibilité",
+            "lang_settings" to "Paramètres de Langue",
+            "lang_desc" to "Changer la langue d'affichage de SubstanceID",
+            "profile_title" to "Profil & Paramètres",
+            "sitter_dir" to "Annuaire des Accompagnateurs de Voyage",
+            "sitter_desc" to "Soutenez d'autres membres pendant les sessions psychédéliques, l'exploration de champignons ou l'intégration.",
+            "search_substances" to "Rechercher des substances...",
+            "harm_reduction_hub" to "Hub de Réduction des Risques",
+            "safety_checklist" to "Liste de Contrôle de Sécurité",
+            "emergency_help" to "Aide d'Urgence",
+            "register_guide" to "S'inscrire comme Guide de Voyage Local",
+            "status_offline" to "Statut : Stockage hors ligne chiffré"
+        ),
+        "de" to mapOf(
+            "app_title" to "SubstanceID",
+            "nav_scanner" to "KI Scan",
+            "nav_reagents" to "Reagenzien",
+            "nav_home" to "Startseite",
+            "nav_tips" to "Prävention",
+            "nav_profile" to "Profil",
+            "emergency_title" to "Ein-Klick-Notruf",
+            "emergency_desc" to "Region auswählen. Drücken Sie die rote Taste, um den Notruf direkt anzurufen.",
+            "emergency_close" to "SCHLIESSEN",
+            "visual_theme" to "Visuelles Thema",
+            "theme_dark" to "Dunkler Raum",
+            "theme_light" to "Helle Ansicht",
+            "lang_settings" to "Spracheinstellungen",
+            "lang_desc" to "Anzeigesprache von SubstanceID ändern",
+            "profile_title" to "Profil & Einstellungen",
+            "sitter_dir" to "Trip-Sitter & Guide Verzeichnis",
+            "sitter_desc" to "Unterstützen Sie andere Mitglieder bei psychedelischen Sitzungen, Pilzerkundungen oder Integration.",
+            "search_substances" to "Substanzen suchen...",
+            "harm_reduction_hub" to "Zentrum für Schadensminimierung",
+            "safety_checklist" to "Sicherheits-Checkliste",
+            "emergency_help" to "Notfallhilfe",
+            "register_guide" to "Als lokaler Trip-Guide registrieren",
+            "status_offline" to "Status: Verschlüsselter Offline-Speicher"
+        )
+    )
+
+    fun get(key: String, lang: String = currentLanguage): String {
+        return translations[lang]?.get(key) ?: translations["en"]?.get(key) ?: key
+    }
+}

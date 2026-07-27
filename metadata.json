@@ -1,0 +1,6 @@
+{
+  "name": "SubstanceID",
+  "description": "A comprehensive educational drug awareness, harm reduction, and emergency safety guide.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
