@@ -389,6 +389,10 @@ fun MainAppContainer(
                             val route = if (substance != null) "ai_chat?substance=$substance" else "ai_chat"
                             navController.navigate(route)
                         },
+                        onSymptomCheckerClicked = {
+                            haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                            navController.navigate("symptom_checker")
+                        },
                         selectedLanguage = selectedLanguage
                     )
                 }
@@ -424,6 +428,12 @@ fun MainAppContainer(
                 composable("emergency") {
                     EmergencyScreen(
                         userEmail = userEmail,
+                        onBack = { navController.popBackStack() }
+                    )
+                }
+
+                composable("symptom_checker") {
+                    SymptomCheckerScreen(
                         onBack = { navController.popBackStack() }
                     )
                 }

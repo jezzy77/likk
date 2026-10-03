@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -44,6 +45,7 @@ fun DashboardScreen(
     onEmergencyClicked: () -> Unit,
     onTestingClicked: () -> Unit,
     onAIChatClicked: (String?) -> Unit,
+    onSymptomCheckerClicked: () -> Unit = {},
     selectedLanguage: String = "en",
     modifier: Modifier = Modifier
 ) {
@@ -254,6 +256,85 @@ fun DashboardScreen(
                             modifier = Modifier.weight(1f),
                             onClick = { selectedTabSegment = 1 }
                         )
+                    }
+                }
+
+                // PROMINENT SYMPTOM & VITALS TRIAGE CHECKER BANNER
+                item {
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                                onSymptomCheckerClicked()
+                            }
+                            .testTag("dashboard_symptom_checker_card"),
+                        shape = RoundedCornerShape(16.dp),
+                        colors = CardDefaults.cardColors(containerColor = Color(0xFF0D1B2A)),
+                        border = BorderStroke(1.dp, Color(0xFF00FFCC).copy(alpha = 0.5f))
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(14.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .size(42.dp)
+                                    .background(
+                                        Brush.linearGradient(
+                                            listOf(Color(0xFF00FFCC), Color(0xFF0077B6))
+                                        ),
+                                        shape = CircleShape
+                                    ),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.MonitorHeart,
+                                    contentDescription = null,
+                                    tint = Color.Black,
+                                    modifier = Modifier.size(22.dp)
+                                )
+                            }
+                            Spacer(modifier = Modifier.width(12.dp))
+                            Column(modifier = Modifier.weight(1f)) {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Text(
+                                        text = "Emergency Symptom Checker",
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 14.sp,
+                                        color = Color.White
+                                    )
+                                    Spacer(modifier = Modifier.width(6.dp))
+                                    Box(
+                                        modifier = Modifier
+                                            .background(Color(0xFF00FFCC).copy(alpha = 0.2f), RoundedCornerShape(4.dp))
+                                            .padding(horizontal = 5.dp, vertical = 2.dp)
+                                    ) {
+                                        Text(
+                                            text = "TRIAGE",
+                                            fontSize = 8.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = Color(0xFF00FFCC)
+                                        )
+                                    }
+                                }
+                                Spacer(modifier = Modifier.height(2.dp))
+                                Text(
+                                    text = "Input physiological signs (breathing, pulse, pupils, skin) to detect emergencies.",
+                                    fontSize = 11.sp,
+                                    lineHeight = 15.sp,
+                                    color = Color.LightGray
+                                )
+                            }
+                            Icon(
+                                imageVector = Icons.Default.ChevronRight,
+                                contentDescription = "Open Symptom Checker",
+                                tint = Color(0xFF00FFCC),
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
                     }
                 }
 
